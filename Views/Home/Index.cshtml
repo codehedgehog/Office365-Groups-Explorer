@@ -1,0 +1,27 @@
+﻿@{
+	ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+	<h1>Deep Dive into the Office 365 Groups API</h1>
+	<p class="lead">This application will show how to interact with Office 365 Groups using the Microsoft Graph API.</p>
+	<p><a href="https://graph.microsoft.io/docs/api-reference/v1.0/resources/group" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<h2>All Groups in your organization</h2>
+		<p>
+			The directory contains groups of many different types (Security groups, Dynamic groups, Office 365 groups).
+			They are all accessible via /myorganization/groups
+		</p>
+		<p>@Html.ActionLink("Go", "Index", "Groups", null, new { @class = "btn btn-default" })</p>
+
+
+	</div>
+	<div class="col-md-6">
+		<h2>Groups I've Joined</h2>
+		<p>Office 365 Groups joined by the current user are accessible off the /me endoint.</p>
+		<p>@Html.ActionLink("Go", "MyGroups", "Me", null, new { @class = "btn btn-default" })</p>
+	</div>
+</div>

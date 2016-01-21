@@ -1,0 +1,78 @@
+﻿@model IEnumerable<O365Groups.Models.ConversationThread>
+
+<h2>@ViewBag.Title</h2>
+
+@if (!String.IsNullOrEmpty(ViewBag.Message))
+{
+	<h4>@ViewBag.Message</h4>
+}
+
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.ccRecipients)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.hasAttachments)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.id)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.isLocked)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.lastDeliveredDateTime)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.preview)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.toRecipients)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.topic)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.uniqueSenders)
+		</th>
+
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.ccRecipients)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.hasAttachments)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.id)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.isLocked)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.lastDeliveredDateTime)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.preview)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.toRecipients)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.topic)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.uniqueSenders)
+			</td>
+		</tr>
+	}
+
+</table>
+<p>
+	@Html.ActionLink("Back to Details", "Details", new { id = ViewBag.GroupId })
+</p>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<O365Groups.Models.DriveItem>
+
+<h2>@ViewBag.Title</h2>
+
+@if (!String.IsNullOrEmpty(ViewBag.Message))
+{
+	<h4>@ViewBag.Message</h4>
+}
+
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.name)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.size)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.lastModifiedDateTime)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.lastModifiedBy)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.webUrl)
+		</th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.name)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.size)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.lastModifiedDateTime)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.lastModifiedBy)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.webUrl)
+			</td>
+		</tr>
+	}
+
+</table>
+<p>
+	@Html.ActionLink("Back to Details", "Details", new { id = ViewBag.GroupId })
+</p>

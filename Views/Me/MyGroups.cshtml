@@ -1,0 +1,42 @@
+﻿@model IEnumerable<O365Groups.Models.Group>
+
+<h2>@ViewBag.Title</h2>
+
+@if (!String.IsNullOrEmpty(ViewBag.Message))
+{
+	<h4>@ViewBag.Message</h4>
+}
+
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.displayName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.description)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.groupTypes)
+		</th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.ActionLink(item.displayName, "Details", "Groups", new { id = item.id }, null)
+				@*				@Html.DisplayFor(modelItem => item.displayName)*@
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.description)
+			</td>
+			<td>
+				@if (item.groupTypes != null)
+				{
+					@Html.DisplayFor(modelItem => item.groupTypes)
+				}
+			</td>
+		</tr>
+	}
+
+</table>

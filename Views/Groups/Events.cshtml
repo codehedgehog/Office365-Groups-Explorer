@@ -1,0 +1,61 @@
+﻿@model IEnumerable<O365Groups.Models.Event>
+
+<h2>@ViewBag.Title</h2>
+
+@if (!String.IsNullOrEmpty(ViewBag.Message))
+{
+	<h4>@ViewBag.Message</h4>
+}
+
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.subject)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.bodyPreview)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.start)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.end)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.isAllDay)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.attendees)
+		</th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		string attendees = String.Join<O365Groups.Models.Attendee>("<br/>", item.attendees);
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.subject)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.bodyPreview)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.start)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.end)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.isAllDay)
+			</td>
+			<td>
+@*				@Html.DisplayFor(modelItem => item.attendees)*@
+				@Html.Raw(attendees)
+			</td>
+		</tr>
+	}
+
+</table>
+<p>
+	@Html.ActionLink("Back to Details", "Details", new { id = ViewBag.GroupId })
+</p>

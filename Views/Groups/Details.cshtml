@@ -1,0 +1,161 @@
+﻿@model O365Groups.Models.Group
+
+<h2>@ViewBag.Title</h2>
+
+@if (!String.IsNullOrEmpty(ViewBag.Message))
+{
+	<h4>@ViewBag.Message</h4>
+}
+
+<div>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.accessType)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.accessType)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.allowExternalSenders)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.allowExternalSenders)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.autoSubscribeNewMembers)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.autoSubscribeNewMembers)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.description)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.description)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.displayName)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.displayName)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.groupTypes)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.groupTypes)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.id)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.id)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.isSubscribedByMail)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.isSubscribedByMail)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.mail)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.mail)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.mailEnabled)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.mailEnabled)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.mailNickname)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.mailNickname)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.onPremisesLastSyncDateTime)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.onPremisesLastSyncDateTime)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.onPremisesSecurityIdentifier)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.onPremisesSecurityIdentifier)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.onPremisesSyncEnabled)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.onPremisesSyncEnabled)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.securityEnabled)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.securityEnabled)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.unseenCount)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.unseenCount)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.visibility)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.visibility)
+		</dd>
+
+	</dl>
+</div>
+<p>
+	@Html.ActionLink("Conversations", "Conversations", new { id = Model.id }) |
+	@Html.ActionLink("Threads", "Threads", new { id = Model.id }) |
+	@Html.ActionLink("Events", "Events", new { id = Model.id }) |
+	@Html.ActionLink("Files", "Files", new { id = Model.id }) 
+</p>
+<p>
+	Edit |
+	@*    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |*@
+	@Html.ActionLink("Back to List", "Index")
+</p>

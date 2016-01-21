@@ -1,0 +1,48 @@
+﻿@model IEnumerable<O365Groups.Models.Conversation>
+
+<h2>@ViewBag.Title</h2>
+
+@if (!String.IsNullOrEmpty(ViewBag.Message))
+{
+	<h4>@ViewBag.Message</h4>
+}
+
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.hasAttachments)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.lastDeliveredDateTime)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.preview)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.topic)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.hasAttachments)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.lastDeliveredDateTime)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.preview)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.topic)
+			</td>
+		</tr>
+	}
+
+</table>
+<p>
+	@Html.ActionLink("Back to Details", "Details", new { id = ViewBag.GroupId })
+</p>

@@ -20,6 +20,11 @@ namespace O365Groups.Models
 		public ConversationThread[] value { get; set; }
 	}
 
+	public class GetPostsResponse
+	{
+		public Post[] value { get; set; }
+	}
+
 	public class GetEventsResponse
 	{
 		public Event[] value { get; set; }

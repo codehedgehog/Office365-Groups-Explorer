@@ -1,0 +1,54 @@
+﻿@model IEnumerable<O365Groups.Models.Post>
+
+<h2>@ViewBag.Title</h2>
+
+@if (!String.IsNullOrEmpty(ViewBag.Message))
+{
+	<h4>@ViewBag.Message</h4>
+}
+
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.sender)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.newParticipants)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.receivedDateTime)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.categories)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.hasAttachments)
+		</th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		string newParticipants = (item.newParticipants == null) ? "" : String.Join<O365Groups.Models.Recipient>("<br/>", item.newParticipants);
+		string categories = String.Join("<br/>", item.categories);
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.sender.emailAddress.name)
+			</td>
+			<td>
+				@Html.Raw(newParticipants)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.receivedDateTime)
+			</td>
+			<td>
+				@Html.Raw(categories)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.hasAttachments)
+			</td>
+		</tr>
+	}
+</table>
+<p>
+	@Html.ActionLink("Back to Group Details", "Details", new { id = ViewBag.GroupId })
+</p>

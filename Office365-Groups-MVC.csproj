@@ -197,6 +197,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ADALTokenCache.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Conversation.cs" />
@@ -206,6 +207,7 @@
     <Compile Include="Models\GraphResponses.cs" />
     <Compile Include="Models\GraphStructs.cs" />
     <Compile Include="Models\Group.cs" />
+    <Compile Include="Models\Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\HttpHelper.cs" />
@@ -269,6 +271,7 @@
     <Content Include="Views\Me\MyGroups.cshtml" />
     <Content Include="Views\Groups\Files.cshtml" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
+    <Content Include="Views\Groups\Posts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

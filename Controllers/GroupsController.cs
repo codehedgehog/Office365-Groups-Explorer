@@ -158,14 +158,17 @@ namespace O365Groups.Controllers
 			return View(convos);
 		}
 
-		public async Task<ActionResult> Threads(string id)
+		public async Task<ActionResult> Threads(string id, string itemId)
 		{
 			List<ConversationThread> threads = new List<ConversationThread>();
 
 			ViewBag.Title = "Group ConversationThreads";
 			ViewBag.GroupId = id;
+			ViewBag.ConversationId = itemId;
 
-			string apiUrl = String.Format("{0}/beta/myorganization/groups/{1}/threads", SettingsHelper.MSGraphResourceId, id);
+			string apiUrl = String.Format("{0}/beta/myorganization/groups/{1}/conversations/{2}/threads", 
+																		SettingsHelper.MSGraphResourceId, 
+																		id, itemId);
 			ViewBag.Message = "API URL: " + apiUrl;
 
 			try
@@ -193,6 +196,43 @@ namespace O365Groups.Controllers
 				ViewBag.Message = ex.Message;
 			}
 			return View(threads);
+		}
+
+		public async Task<ActionResult> Posts(string id, string itemId)
+		{
+			List<Post> posts = new List<Post>();
+
+			ViewBag.Title = "Group ConversationThread Posts";
+			ViewBag.GroupId = id;
+
+			string apiUrl = String.Format("{0}/beta/myorganization/groups/{1}/threads/{2}/posts", SettingsHelper.MSGraphResourceId, id, itemId);
+			ViewBag.Message = "API URL: " + apiUrl;
+
+			try
+			{
+				string responseContent = await HttpHelper.GetHttpResource(apiUrl);
+				var responseObject = JsonConvert.DeserializeObject<GetPostsResponse>(responseContent);
+				foreach (var item in responseObject.value)
+				{
+					posts.Add(item);
+				}
+			}
+			catch (WebException webException)
+			{
+				if (webException.Response != null)
+				{
+					using (var reader = new StreamReader(webException.Response.GetResponseStream()))
+					{
+						var responseContent = reader.ReadToEnd();
+						ViewBag.Message = responseContent;
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				ViewBag.Message = ex.Message;
+			}
+			return View(posts);
 		}
 
 		public async Task<ActionResult> Events(string id)

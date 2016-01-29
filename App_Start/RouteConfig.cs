@@ -24,8 +24,13 @@ namespace O365Groups
 					defaults: new { controller = "Account", action = "SignIn" }
 			);
 			routes.MapRoute(
+					name: "Groups",
+					url: "groups/{id}/{action}/{itemId}",
+					defaults: new { controller = "Groups", action = "Index", id = UrlParameter.Optional, itemId = UrlParameter.Optional }
+			);
+			routes.MapRoute(
 					name: "Default",
-					url: "{controller}/{id}/{action}",
+					url: "{controller}/{action}/{id}",
 					defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
 			);
 		}
